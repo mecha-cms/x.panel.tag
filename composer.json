@@ -1,0 +1,9 @@
+{
+  "description": "Control panel interface to conveniently manage tag files.",
+  "license": "GPL-3.0-or-later",
+  "name": "mecha-cms/x.panel.tag",
+  "require": {
+    "mecha-cms/x.panel": "^3.0.0",
+    "mecha-cms/x.tag": "^2.0.0"
+  }
+}
