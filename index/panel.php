@@ -5,7 +5,7 @@ if (!isset($state->x->tag)) {
     return $_;
 }
 
-Hook::set('_', function($_) use($user) {
+Hook::set('_', function ($_) use ($user) {
     if ('POST' === $_SERVER['REQUEST_METHOD'] && 0 === strpos($_['path'] . '/', 'tag/') && ($_['file'] || $_['folder'])) {
         $current = $_POST['data']['id'] ?? $_POST['page']['id'] ?? 0;
         foreach (g('set' === $_['task'] ? $_['folder'] : dirname($_['file']), 'archive,page') as $k => $v) {
@@ -36,7 +36,7 @@ Hook::set('_', function($_) use($user) {
             'do.page.set',
             'do.page/page.get',
             'do.page/page.set'
-        ], function($_) use($user) {
+        ], function ($_) use ($user) {
             // Method not allowed!
             if ('POST' !== $_SERVER['REQUEST_METHOD']) {
                 return $_;
@@ -58,7 +58,7 @@ Hook::set('_', function($_) use($user) {
             if (!is_dir($d = LOT . D . 'tag')) {
                 mkdir($d, 0775, true);
             }
-            $any = map(Tags::from(LOT . D . 'tag', 'archive,page')->sort([-1, 'id']), static function($tag) {
+            $any = map(Tags::from(LOT . D . 'tag', 'archive,page')->sort([-1, 'id']), static function ($tag) {
                 return $tag->id;
             })[0] ?? 0; // Get the highest tag ID
             $out = [];
@@ -127,7 +127,7 @@ if (!array_key_exists('type', $_GET) && !isset($_['type'])) {
 }
 
 if (0 === strpos($_['type'] . '/', 'pages/tag/')) {
-    Hook::set('_', function($_) {
+    Hook::set('_', function ($_) {
         if (
             !empty($_['lot']['desk']['lot']['form']['lot'][1]['lot']['tabs']['lot']['pages']['lot']['pages']['lot']) &&
             !empty($_['lot']['desk']['lot']['form']['lot'][1]['lot']['tabs']['lot']['pages']['lot']['pages']['type']) &&
@@ -171,7 +171,7 @@ if (0 === strpos($_['type'] . '/', 'pages/tag/')) {
         }
         ++$id;
     }
-    Hook::set('_', function($_) use($id, $page) {
+    Hook::set('_', function ($_) use ($id, $page) {
         $_['lot'] = array_replace_recursive($_['lot'] ?? [], [
             'bar' => [
                 // `bar`
