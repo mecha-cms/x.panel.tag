@@ -7,18 +7,18 @@ This extension adds features to the control panel to make it easier to manage ta
 
 Without this extension, the tag menu icon and tags page will look very generic like the assets page:
 
-![3](index/3.png)
+![3](index/3.png?v=2023-04-15)
 
 With this extension, the tags page will look like this:
 
-![1](index/1.png)
+![1](index/1.png?v=2023-04-15)
 
 With the new tags page view, it will of course give a new tag form as well:
 
-![2](index/2.png)
+![2](index/2.png?v=2023-04-15)
 
 A tags field will appear on the page form to allow you to easily add tags to the page. If the tag name doesn’t exist
 yet, it will be created automatically when the page is published or modified. You can then change its title and
 description later from the tags page:
 
-![3](index/3.png)
+![index](index.png?v=2023-04-15)
