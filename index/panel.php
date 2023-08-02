@@ -103,6 +103,7 @@ function do__page__set($_) {
             \chmod($ff, 0600);
             \file_put_contents($ff = $dd . \D . 'time.data', \date('Y-m-d H:i:s'));
             \chmod($ff, 0600);
+            $_SESSION['_']['files'][$f] = 1;
             $_['alert']['info'][$f] = ['%s %s successfully created.', ['Tag', '<code>' . \x\panel\from\path($f) . '</code>']];
             ++$any;
         }
