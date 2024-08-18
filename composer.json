@@ -4,6 +4,6 @@
   "name": "mecha-cms/x.panel.tag",
   "require": {
     "mecha-cms/x.panel": "^3.0.0",
-    "mecha-cms/x.tag": "^2.0.0"
+    "mecha-cms/x.tag": "^3.0.0"
   }
 }
