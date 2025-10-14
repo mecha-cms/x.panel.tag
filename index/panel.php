@@ -6,7 +6,7 @@ if (!isset($state->x->tag)) {
 }
 
 function _($_) {
-    \extract($GLOBALS, \EXTR_SKIP);
+    \extract(\lot(), \EXTR_SKIP);
     if ('POST' === $_SERVER['REQUEST_METHOD'] && 0 === \strpos($_['path'] . '/', 'tag/') && ($_['file'] || $_['folder'])) {
         $current = $_POST['data']['id'] ?? $_POST['page']['id'] ?? 0;
         foreach (\g('set' === $_['task'] ? $_['folder'] : \dirname($_['file']), 'archive,page') as $k => $v) {
@@ -61,7 +61,7 @@ function do__page__set($_) {
         return $_;
     }
     // Abort by previous hook’s return value if any
-    if (!empty($_['alert']['error'])) {
+    if (!empty($_['alert']['error']) || $_['status'] >= 400) {
         return $_;
     }
     // Abort if current page is not a file
@@ -74,13 +74,11 @@ function do__page__set($_) {
         \is_file($data) && \unlink($data);
         return $_;
     }
-    \extract($GLOBALS,  \EXTR_SKIP);
+    \extract(\lot(), \EXTR_SKIP);
     if (!\is_dir($folder = \LOT . \D . 'tag')) {
         \mkdir($folder, 0775, true);
     }
-    $any = \map(\Tags::from($folder, 'archive,page')->sort([-1, 'id']), static function ($tag) {
-        return $tag->id;
-    })[0] ?? 0; // Get the highest tag ID
+    $any = \Tags::from($folder, 'archive,page')->sort([-1, 'id'])->pluck('id')->get(0) ?? 0; // Get the highest tag ID
     $out = [];
     ++$any; // New ID must be unique
     foreach (\preg_split('/\s*,+\s*/', $_POST['tags']) as $v) {
@@ -109,7 +107,6 @@ function do__page__set($_) {
         }
     }
     if ($out) {
-        \sort($out);
         \file_put_contents($data, \json_encode($out));
         \chmod($data, 0600);
     }

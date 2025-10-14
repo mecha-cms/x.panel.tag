@@ -11,7 +11,7 @@ images:
 - /lot/x/panel.tag/index/3.png
 author: Taufik Nurrohman
 type: Markdown
-version: 1.0.0
+version: 1.1.0
 ...
 
 This extension adds features to the control panel to make it easier to manage tag files.
