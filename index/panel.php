@@ -36,7 +36,7 @@ function _($_) {
             'stack' => 41,
             'state' => ['max' => 12],
             'type' => 'query',
-            'value' => (new \Page($_['file']))->query,
+            'value' => (string) (new \Page($_['file']))->tags,
             'width' => true
         ];
         // Convert list of tag(s) slug into list of tag(s) ID
