@@ -218,7 +218,7 @@ if (0 === \strpos($_['type'] . '/', 'pages/tag/')) {
                                                     'fields' => [
                                                         // `fields`
                                                         'lot' => [
-                                                            'content' => ['skip' => true]
+                                                            'content' => $page->content ? ['type' => 'hidden'] : ['skip' => true]
                                                         ]
                                                     ]
                                                 ],
